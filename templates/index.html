@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Song</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" accept=".mp3,.wav" required>
+            
+            <label for="pixel_size">Pixel Size:</label>
+            <select name="pixel_size" id="pixel_size">
+                {% for i in range(1, 11) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="animation_type">Animation Type:</label>
+            <select name="animation_type" id="animation_type">
+                <option value="circle">Circle</option>
+                <option value="oval">Oval</option>
+                <option value="square">Square</option>
+                <option value="line-horizontal">Horizontal Lines</option>
+                <option value="line-vertical">Vertical Lines</option>
+                <option value="wave">Wave</option>
+            </select>
+
+            <button type="submit" id="generate">Generate</button>
+        </form>
+    </div>
+</body>
+</html>
